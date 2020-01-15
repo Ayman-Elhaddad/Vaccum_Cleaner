@@ -3,9 +3,7 @@
 #include "SW.h"
 
 /* SW_Update period */
-//SW_PERIOD_MS = 20 greater than the bouncing period
-//علشان بالكتير يجيلي سامبل واحده جوه ال 20
-//switch data sheet
+
 #define SW_PERIOD_MS   (20)
 
 /* Number of samples per SW */
@@ -27,11 +25,12 @@ typedef struct
 }tSW_Info;
 
 /* Switches info */
-//ÇáÏÇÊÇ áãÇ ÊÈÞì ÔÈå ÈÚÖ ÈäÍØåã Ýì ÇÑÑÇí
 static tSW_Info SWs_Info[N_SWITCHES];
 
-/*Init .. 1- initialize hardwadre
-2 - initialize data */
+/*Init ..
+ * 1- initialize hardwadre
+ * 2 - initialize data 
+ */
 
 void SW_Init(void)
 {
@@ -67,9 +66,11 @@ tSW_State SW_GetState(tSW sw)
 }
 
 
-/* Update >> 1- check timing
-2 - update samples
-3 - update state */
+/* Update >>
+ *  1- check timing
+ * 2 - update samples
+ * 3 - update state
+ *  */
 
 void SW_Update(void)
 {

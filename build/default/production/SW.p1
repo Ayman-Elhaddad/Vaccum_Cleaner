@@ -1,17 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"31 SW.c
-[; ;SW.c: 31: static tSW_Info SWs_Info[(3)];
+"28 SW.c
+[; ;SW.c: 28: static tSW_Info SWs_Info[(3)];
 [c E857 0 1 2 3 .. ]
 [n E857 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
-"24
-[; ;SW.c: 24: {
+"22
+[; ;SW.c: 22: {
 [s S95 `uc -> 2 `i `E857 1 ]
 [n S95 . sw_samples sw_state ]
 "1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"47 SW.c
-[; ;SW.c: 47:     for (index = SW_PLUS; index < (3); index++)
+"46 SW.c
+[; ;SW.c: 46:     for (index = SW_PLUS; index < (3); index++)
 [c E852 0 1 2 .. ]
 [n E852 . SW_PLUS SW_MINUS SW_PRESURE  ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
@@ -213,300 +213,300 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"31 SW.c
-[; ;SW.c: 31: static tSW_Info SWs_Info[(3)];
+"28 SW.c
+[; ;SW.c: 28: static tSW_Info SWs_Info[(3)];
 [v _SWs_Info `S95 ~T0 @X0 -> 3 `i s ]
-"36
-[; ;SW.c: 36: void SW_Init(void)
+"35
+[; ;SW.c: 35: void SW_Init(void)
 [v _SW_Init `(v ~T0 @X0 1 ef ]
-"37
-[; ;SW.c: 37: {
+"36
+[; ;SW.c: 36: {
 {
 [e :U _SW_Init ]
 [f ]
-"38
-[; ;SW.c: 38:     tByte index = 0;
+"37
+[; ;SW.c: 37:     tByte index = 0;
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
-"42
-[; ;SW.c: 42:     ((((TRISB))) = (((TRISB)) & (~(1 << ((0)))))|((1) << ((0))));
+"41
+[; ;SW.c: 41:     ((((TRISB))) = (((TRISB)) & (~(1 << ((0)))))|((1) << ((0))));
 [e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 0 `i << -> 1 `i -> 0 `i `uc ]
-"43
-[; ;SW.c: 43:     ((((TRISB))) = (((TRISB)) & (~(1 << ((1)))))|((1) << ((1))));
+"42
+[; ;SW.c: 42:     ((((TRISB))) = (((TRISB)) & (~(1 << ((1)))))|((1) << ((1))));
 [e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 1 `i << -> 1 `i -> 1 `i `uc ]
-"44
-[; ;SW.c: 44:     ((((TRISB))) = (((TRISB)) & (~(1 << ((2)))))|((1) << ((2))));
+"43
+[; ;SW.c: 43:     ((((TRISB))) = (((TRISB)) & (~(1 << ((2)))))|((1) << ((2))));
 [e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 2 `i << -> 1 `i -> 2 `i `uc ]
-"47
-[; ;SW.c: 47:     for (index = SW_PLUS; index < (3); index++)
+"46
+[; ;SW.c: 46:     for (index = SW_PLUS; index < (3); index++)
 {
 [e = _index -> . `E852 0 `uc ]
 [e $ < -> _index `i -> 3 `i 97  ]
 [e $U 98  ]
 [e :U 97 ]
-"48
-[; ;SW.c: 48:     {
+"47
+[; ;SW.c: 47:     {
 {
-"50
-[; ;SW.c: 50:         SWs_Info[index].sw_samples[0] = (1);
+"49
+[; ;SW.c: 49:         SWs_Info[index].sw_samples[0] = (1);
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> -> 1 `i `uc ]
-"51
-[; ;SW.c: 51:         SWs_Info[index].sw_samples[1] = (1);
+"50
+[; ;SW.c: 50:         SWs_Info[index].sw_samples[1] = (1);
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> -> 1 `i `uc ]
-"54
-[; ;SW.c: 54:         SWs_Info[index].sw_state = SW_RELEASED;
+"53
+[; ;SW.c: 53:         SWs_Info[index].sw_state = SW_RELEASED;
 [e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 0 ]
-"56
-[; ;SW.c: 56:     }
+"55
+[; ;SW.c: 55:     }
 }
 [e ++ _index -> -> 1 `i `uc ]
 [e $ < -> _index `i -> 3 `i 97  ]
 [e :U 98 ]
 }
-"58
-[; ;SW.c: 58: }
+"57
+[; ;SW.c: 57: }
 [e :UE 96 ]
 }
-"61
-[; ;SW.c: 61: tSW_State SW_GetState(tSW sw)
+"60
+[; ;SW.c: 60: tSW_State SW_GetState(tSW sw)
 [v _SW_GetState `(E857 ~T0 @X0 1 ef1`E852 ]
-"62
-[; ;SW.c: 62: {
+"61
+[; ;SW.c: 61: {
 {
 [e :U _SW_GetState ]
-"61
-[; ;SW.c: 61: tSW_State SW_GetState(tSW sw)
+"60
+[; ;SW.c: 60: tSW_State SW_GetState(tSW sw)
 [v _sw `E852 ~T0 @X0 1 r1 ]
-"62
-[; ;SW.c: 62: {
+"61
+[; ;SW.c: 61: {
 [f ]
-"65
-[; ;SW.c: 65:     return SWs_Info[sw].sw_state;
+"64
+[; ;SW.c: 64:     return SWs_Info[sw].sw_state;
 [e ) . *U + &U _SWs_Info * -> _sw `ux -> -> # *U &U _SWs_Info `ui `ux 1 ]
 [e $UE 100  ]
-"67
-[; ;SW.c: 67: }
+"66
+[; ;SW.c: 66: }
 [e :UE 100 ]
 }
-"74
-[; ;SW.c: 74: void SW_Update(void)
-[v _SW_Update `(v ~T0 @X0 1 ef ]
 "75
-[; ;SW.c: 75: {
+[; ;SW.c: 75: void SW_Update(void)
+[v _SW_Update `(v ~T0 @X0 1 ef ]
+"76
+[; ;SW.c: 76: {
 {
 [e :U _SW_Update ]
 [f ]
-"76
-[; ;SW.c: 76:     static tWord SW_counter = 0;
+"77
+[; ;SW.c: 77:     static tWord SW_counter = 0;
 [v F877 `ui ~T0 @X0 1 s SW_counter ]
 [i F877
 -> -> 0 `i `ui
 ]
-"77
-[; ;SW.c: 77:     tByte index = 0;
+"78
+[; ;SW.c: 78:     tByte index = 0;
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
-"80
-[; ;SW.c: 80:     SW_counter += (5);
+"81
+[; ;SW.c: 81:     SW_counter += (5);
 [e =+ F877 -> -> 5 `i `ui ]
-"82
-[; ;SW.c: 82:     if (SW_counter != (20)){
+"83
+[; ;SW.c: 83:     if (SW_counter != (20)){
 [e $ ! != F877 -> -> 20 `i `ui 102  ]
 {
-"83
-[; ;SW.c: 83:         return;
-[e $UE 101  ]
 "84
-[; ;SW.c: 84:     }
+[; ;SW.c: 84:         return;
+[e $UE 101  ]
+"85
+[; ;SW.c: 85:     }
 }
 [e :U 102 ]
-"86
-[; ;SW.c: 86:     SW_counter = 0;
+"87
+[; ;SW.c: 87:     SW_counter = 0;
 [e = F877 -> -> 0 `i `ui ]
-"89
-[; ;SW.c: 89:     for (index = SW_PLUS; index < (3); index++)
+"90
+[; ;SW.c: 90:     for (index = SW_PLUS; index < (3); index++)
 {
 [e = _index -> . `E852 0 `uc ]
 [e $ < -> _index `i -> 3 `i 103  ]
 [e $U 104  ]
 [e :U 103 ]
-"90
-[; ;SW.c: 90:     {
+"91
+[; ;SW.c: 91:     {
 {
-"93
-[; ;SW.c: 93:         SWs_Info[index].sw_samples[0] = SWs_Info[index].sw_samples[1];
+"94
+[; ;SW.c: 94:         SWs_Info[index].sw_samples[0] = SWs_Info[index].sw_samples[1];
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux ]
-"95
-[; ;SW.c: 95:         if (index == SW_PLUS)
-[e $ ! == -> _index `i -> . `E852 0 `i 106  ]
 "96
-[; ;SW.c: 96:         {
-{
+[; ;SW.c: 96:         if (index == SW_PLUS)
+[e $ ! == -> _index `i -> . `E852 0 `i 106  ]
 "97
-[; ;SW.c: 97:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((0)))) >> (((0))));
-[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 0 `i -> 0 `i `uc ]
+[; ;SW.c: 97:         {
+{
 "98
-[; ;SW.c: 98:         } else if (index == SW_MINUS)
+[; ;SW.c: 98:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((0)))) >> (((0))));
+[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 0 `i -> 0 `i `uc ]
+"99
+[; ;SW.c: 99:         } else if (index == SW_MINUS)
 }
 [e $U 107  ]
 [e :U 106 ]
 [e $ ! == -> _index `i -> . `E852 1 `i 108  ]
-"99
-[; ;SW.c: 99:         {
-{
 "100
-[; ;SW.c: 100:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((1)))) >> (((1))));
-[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 1 `i -> 1 `i `uc ]
+[; ;SW.c: 100:         {
+{
 "101
-[; ;SW.c: 101:         } else if (index == SW_PRESURE)
+[; ;SW.c: 101:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((1)))) >> (((1))));
+[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 1 `i -> 1 `i `uc ]
+"102
+[; ;SW.c: 102:         } else if (index == SW_PRESURE)
 }
 [e $U 109  ]
 [e :U 108 ]
 [e $ ! == -> _index `i -> . `E852 2 `i 110  ]
-"102
-[; ;SW.c: 102:         {
-{
 "103
-[; ;SW.c: 103:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((2)))) >> (((2))));
-[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 2 `i -> 2 `i `uc ]
+[; ;SW.c: 103:         {
+{
 "104
-[; ;SW.c: 104:         } else
+[; ;SW.c: 104:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((2)))) >> (((2))));
+[e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 2 `i -> 2 `i `uc ]
+"105
+[; ;SW.c: 105:         } else
 }
 [e $U 111  ]
 [e :U 110 ]
-"105
-[; ;SW.c: 105:         {
+"106
+[; ;SW.c: 106:         {
 {
-"107
-[; ;SW.c: 107:         }
+"108
+[; ;SW.c: 108:         }
 }
 [e :U 111 ]
 [e :U 109 ]
 [e :U 107 ]
-"112
-[; ;SW.c: 112:         switch(SWs_Info[index].sw_state)
-[e $U 113  ]
 "113
-[; ;SW.c: 113:         {
+[; ;SW.c: 113:         switch(SWs_Info[index].sw_state)
+[e $U 113  ]
+"114
+[; ;SW.c: 114:         {
 {
-"115
-[; ;SW.c: 115:             case SW_RELEASED:
+"116
+[; ;SW.c: 116:             case SW_RELEASED:
 [e :U 114 ]
-"117
-[; ;SW.c: 117:                 if ((SWs_Info[index].sw_samples[0] == (0)) &&
+"118
+[; ;SW.c: 118:                 if ((SWs_Info[index].sw_samples[0] == (0)) &&
 [e $ ! && == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 0 `i == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 0 `i 115  ]
-"119
-[; ;SW.c: 119:                 {
-{
 "120
-[; ;SW.c: 120:                     SWs_Info[index].sw_state = SW_PRE_PRESSED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 1 ]
+[; ;SW.c: 120:                 {
+{
 "121
-[; ;SW.c: 121:                 } else
+[; ;SW.c: 121:                     SWs_Info[index].sw_state = SW_PRE_PRESSED;
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 1 ]
+"122
+[; ;SW.c: 122:                 } else
 }
 [e $U 116  ]
 [e :U 115 ]
-"122
-[; ;SW.c: 122:                 {
+"123
+[; ;SW.c: 123:                 {
 {
-"124
-[; ;SW.c: 124:                 }
+"125
+[; ;SW.c: 125:                 }
 }
 [e :U 116 ]
-"125
-[; ;SW.c: 125:                 break;
-[e $U 112  ]
 "126
-[; ;SW.c: 126:             case SW_PRE_PRESSED:
+[; ;SW.c: 126:                 break;
+[e $U 112  ]
+"127
+[; ;SW.c: 127:             case SW_PRE_PRESSED:
 [e :U 117 ]
-"128
-[; ;SW.c: 128:                 if (SWs_Info[index].sw_samples[1] == (0))
-[e $ ! == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 0 `i 118  ]
 "129
-[; ;SW.c: 129:                 {
-{
+[; ;SW.c: 129:                 if (SWs_Info[index].sw_samples[1] == (0))
+[e $ ! == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 0 `i 118  ]
 "130
-[; ;SW.c: 130:                     SWs_Info[index].sw_state = SW_PRESSED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 2 ]
+[; ;SW.c: 130:                 {
+{
 "131
-[; ;SW.c: 131:                 } else
+[; ;SW.c: 131:                     SWs_Info[index].sw_state = SW_PRESSED;
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 2 ]
+"132
+[; ;SW.c: 132:                 } else
 }
 [e $U 119  ]
 [e :U 118 ]
-"132
-[; ;SW.c: 132:                 {
+"133
+[; ;SW.c: 133:                 {
 {
-"134
-[; ;SW.c: 134:                 }
+"135
+[; ;SW.c: 135:                 }
 }
 [e :U 119 ]
-"135
-[; ;SW.c: 135:                 break;
-[e $U 112  ]
 "136
-[; ;SW.c: 136:             case SW_PRESSED:
+[; ;SW.c: 136:                 break;
+[e $U 112  ]
+"137
+[; ;SW.c: 137:             case SW_PRESSED:
 [e :U 120 ]
-"138
-[; ;SW.c: 138:                 if ((SWs_Info[index].sw_samples[0] == (1)) &&
+"139
+[; ;SW.c: 139:                 if ((SWs_Info[index].sw_samples[0] == (1)) &&
 [e $ ! && == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 1 `i == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 1 `i 121  ]
-"140
-[; ;SW.c: 140:                 {
-{
 "141
-[; ;SW.c: 141:                     SWs_Info[index].sw_state = SW_PRE_RELEASED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 3 ]
+[; ;SW.c: 141:                 {
+{
 "142
-[; ;SW.c: 142:                 }
+[; ;SW.c: 142:                     SWs_Info[index].sw_state = SW_PRE_RELEASED;
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 3 ]
+"143
+[; ;SW.c: 143:                 }
 }
 [e $U 122  ]
-"143
-[; ;SW.c: 143:                 else
-[e :U 121 ]
 "144
-[; ;SW.c: 144:                 {
+[; ;SW.c: 144:                 else
+[e :U 121 ]
+"145
+[; ;SW.c: 145:                 {
 {
-"146
-[; ;SW.c: 146:                 }
+"147
+[; ;SW.c: 147:                 }
 }
 [e :U 122 ]
-"147
-[; ;SW.c: 147:                 break;
-[e $U 112  ]
 "148
-[; ;SW.c: 148:             case SW_PRE_RELEASED:
+[; ;SW.c: 148:                 break;
+[e $U 112  ]
+"149
+[; ;SW.c: 149:             case SW_PRE_RELEASED:
 [e :U 123 ]
-"150
-[; ;SW.c: 150:                 if (SWs_Info[index].sw_samples[1] == (1))
-[e $ ! == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 1 `i 124  ]
 "151
-[; ;SW.c: 151:                 {
-{
+[; ;SW.c: 151:                 if (SWs_Info[index].sw_samples[1] == (1))
+[e $ ! == -> *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux `i -> 1 `i 124  ]
 "152
-[; ;SW.c: 152:                     SWs_Info[index].sw_state = SW_RELEASED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 0 ]
+[; ;SW.c: 152:                 {
+{
 "153
-[; ;SW.c: 153:                 } else
+[; ;SW.c: 153:                     SWs_Info[index].sw_state = SW_RELEASED;
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 0 ]
+"154
+[; ;SW.c: 154:                 } else
 }
 [e $U 125  ]
 [e :U 124 ]
-"154
-[; ;SW.c: 154:                 {
+"155
+[; ;SW.c: 155:                 {
 {
-"156
-[; ;SW.c: 156:                 }
+"157
+[; ;SW.c: 157:                 }
 }
 [e :U 125 ]
-"157
-[; ;SW.c: 157:                 break;
+"158
+[; ;SW.c: 158:                 break;
 [e $U 112  ]
-"159
-[; ;SW.c: 159:             default:
-[e :U 126 ]
 "160
-[; ;SW.c: 160:                 break;
-[e $U 112  ]
+[; ;SW.c: 160:             default:
+[e :U 126 ]
 "161
-[; ;SW.c: 161:         }
+[; ;SW.c: 161:                 break;
+[e $U 112  ]
+"162
+[; ;SW.c: 162:         }
 }
 [e $U 112  ]
 [e :U 113 ]
@@ -516,14 +516,14 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E857 3 `ui 123
  126 ]
 [e :U 112 ]
-"163
-[; ;SW.c: 163:     }
+"164
+[; ;SW.c: 164:     }
 }
 [e ++ _index -> -> 1 `i `uc ]
 [e $ < -> _index `i -> 3 `i 103  ]
 [e :U 104 ]
 }
-"165
-[; ;SW.c: 165: }
+"166
+[; ;SW.c: 166: }
 [e :UE 101 ]
 }

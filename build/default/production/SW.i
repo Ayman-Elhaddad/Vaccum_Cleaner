@@ -1772,7 +1772,7 @@ void SW_Init(void);
 tSW_State SW_GetState(tSW sw);
 void SW_Update(void);
 # 3 "SW.c" 2
-# 23 "SW.c"
+# 21 "SW.c"
 typedef struct
 {
     tByte sw_samples[(2)];
@@ -1780,8 +1780,9 @@ typedef struct
 }tSW_Info;
 
 
-
 static tSW_Info SWs_Info[(3)];
+
+
 
 
 
@@ -1818,12 +1819,7 @@ tSW_State SW_GetState(tSW sw)
     return SWs_Info[sw].sw_state;
 
 }
-
-
-
-
-
-
+# 75 "SW.c"
 void SW_Update(void)
 {
     static tWord SW_counter = 0;

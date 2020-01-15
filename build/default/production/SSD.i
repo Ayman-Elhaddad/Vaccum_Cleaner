@@ -1,4 +1,4 @@
-# 1 "vaccum.c"
+# 1 "SSD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,205 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "vaccum.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__size_t.h" 1 3
-
-
-
-typedef unsigned size_t;
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__null.h" 1 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdarg.h" 1 3
-
-
-
-
-
-
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-struct __prbuf
-{
- char * ptr;
- void (* func)(char);
-};
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 1 3
-
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 1 3
-# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 3
-extern int errno;
-# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 2 3
-
-
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-
-
-extern char * cgets(char *);
-extern void cputs(const char *);
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-# 2 "vaccum.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 1 3
-
-
-
-
-
-
-typedef unsigned short wchar_t;
-
-
-
-
-
-
-
-typedef struct {
- int rem;
- int quot;
-} div_t;
-typedef struct {
- unsigned rem;
- unsigned quot;
-} udiv_t;
-typedef struct {
- long quot;
- long rem;
-} ldiv_t;
-typedef struct {
- unsigned long quot;
- unsigned long rem;
-} uldiv_t;
-# 65 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 3
-extern double atof(const char *);
-extern double strtod(const char *, const char **);
-extern int atoi(const char *);
-extern unsigned xtoi(const char *);
-extern long atol(const char *);
-
-
-
-extern long strtol(const char *, char **, int);
-
-extern int rand(void);
-extern void srand(unsigned int);
-extern void * calloc(size_t, size_t);
-extern div_t div(int numer, int denom);
-extern udiv_t udiv(unsigned numer, unsigned denom);
-extern ldiv_t ldiv(long numer, long denom);
-extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-
-
-
-extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-extern unsigned int _rotl(unsigned int value, unsigned int shift);
-extern unsigned int _rotr(unsigned int value, unsigned int shift);
-
-
-
-
-extern void * malloc(size_t);
-extern void free(void *);
-extern void * realloc(void *, size_t);
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 99 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 2 3
-
-
-
-
-
-extern int atexit(void (*)(void));
-extern char * getenv(const char *);
-extern char ** environ;
-extern int system(char *);
-extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-extern int abs(int);
-extern long labs(long);
-
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
-# 3 "vaccum.c" 2
-
+# 1 "SSD.c" 2
 # 1 "./Main.h" 1
 
 
@@ -231,6 +33,11 @@ extern double __fpnormalize(double);
 
 
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 1 3
+# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 3
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 23 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 
 
 
@@ -1935,36 +1742,10 @@ extern __bank0 __bit __timeout;
 # 90 "./Main.h"
 typedef unsigned char tByte;
 typedef unsigned int tWord;
-# 4 "vaccum.c" 2
+# 1 "SSD.c" 2
 
 # 1 "./Port.h" 1
-# 5 "vaccum.c" 2
-
-# 1 "./SW.h" 1
-
-
-
-typedef enum
-{
-    SW_PLUS,
-    SW_MINUS,
-    SW_PRESURE
-}tSW;
-
-typedef enum
-{
-    SW_RELEASED,
-    SW_PRE_PRESSED,
-    SW_PRESSED,
-    SW_PRE_RELEASED
-}tSW_State;
-
-void SW_Init(void);
-
-
-tSW_State SW_GetState(tSW sw);
-void SW_Update(void);
-# 6 "vaccum.c" 2
+# 2 "SSD.c" 2
 
 # 1 "./SSD.h" 1
 # 12 "./SSD.h"
@@ -1997,52 +1778,157 @@ void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
 
 
 void SSD_SetState(tSSD ssd, tSSD_State state);
-# 7 "vaccum.c" 2
-
-
-int main()
+# 3 "SSD.c" 2
+# 13 "SSD.c"
+static tByte SSD_Data[(4)] =
 {
-    SW_Init();
-    SSD_Init();
+
+    0b00001000,
+    0b01001000,
+    0b01001001,
+    0b00000000
+};
+
+
+static tSSD SSD_current = SSD_FIRST;
+
+
+static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
 
 
 
-    while(1)
-    {
-        _delay((unsigned long)((1)*(80000000/4000.0)));
-        SW_Update();
-        SSD_Update();
-        ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(1 << ((3))));
 
-        if( SW_GetState(SW_PLUS) == SW_PRESSED )
-
-        {
+static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
 
 
-          SSD_SetValue(SSD_FIRST,SSD_LOW);
-          SSD_SetValue(SSD_SECOND,SSD_NULL);
-          SSD_SetValue(SSD_THIRD,SSD_NULL);
-        }
-        else if( SW_GetState(SW_MINUS) == SW_PRESSED )
-
-        {
+void SSD_Init(void)
+{
 
 
-          SSD_SetValue(SSD_FIRST,SSD_LOW);
-          SSD_SetValue(SSD_SECOND,SSD_MID);
-          SSD_SetValue(SSD_THIRD,SSD_NULL);
-
-        }
-        else if( SW_GetState(SW_PRESURE) == SW_PRESSED )
-
-        {
+    ((((TRISD))) = ((0))?(~(0)):((0)));
+    SSD_Out(SSD_FIRST, SSD_NULL);
+    SSD_Out(SSD_SECOND, SSD_NULL);
+    SSD_Out(SSD_THIRD, SSD_NULL);
 
 
-          SSD_SetValue(SSD_FIRST,SSD_LOW);
-          SSD_SetValue(SSD_SECOND,SSD_MID);
-          SSD_SetValue(SSD_THIRD,SSD_HIGH);
-        }
 
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((7)))))|((0) << ((7))));
+
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((6)))))|((0) << ((6))));
+
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((5)))))|((0) << ((5))));
+
+
+    SSD_SetState(SSD_FIRST, SSD_OFF);
+    SSD_SetState(SSD_SECOND, SSD_OFF);
+    SSD_SetState(SSD_THIRD, SSD_OFF);
+
+
+}
+
+void SSD_Update(void)
+{
+    static tWord SSD_counter = 0;
+
+
+
+    SSD_counter += (5);
+
+    if (SSD_counter != (5)){
+        return;
     }
-    return 0;
+
+    SSD_counter = 0;
+
+
+    SSD_Out(SSD_current, SSD_Values[SSD_current]);
+
+    if (SSD_current == SSD_THIRD)
+    {
+        SSD_current = SSD_FIRST;
+    } else
+    {
+        SSD_current++;
+    }
+
+}
+
+
+tSSD_Symbol SSD_GetValue(tSSD ssd)
+{
+
+    return SSD_Values[ssd];
+
+}
+
+
+void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
+{
+
+    SSD_Values[ssd] = ssd_symbol;
+
+}
+
+tSSD_State SSD_GetState(tSSD ssd)
+{
+    tSSD_State ret = SSD_OFF;
+
+    switch (ssd)
+    {
+        case SSD_FIRST:
+            ret = (((((PORTB))) & (1 << ((7)))) >> (((7))));
+            break;
+        case SSD_SECOND:
+            ret = (((((PORTB))) & (1 << ((6)))) >> (((6))));
+            break;
+        case SSD_THIRD:
+            ret = (((((PORTB))) & (1 << ((5)))) >> (((5))));
+            break;
+
+
+        default:
+            break;
+    }
+
+     return ret;
+
+}
+
+void SSD_SetState(tSSD ssd, tSSD_State state)
+{
+
+    switch (ssd)
+    {
+        case SSD_FIRST:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((7)))))|(state << ((7))));
+            break;
+        case SSD_SECOND:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((6)))))|(state << ((6))));
+            break;
+        case SSD_THIRD:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((5)))))|(state << ((5))));
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
+{
+
+    SSD_SetState(SSD_FIRST, SSD_OFF);
+    SSD_SetState(SSD_SECOND, SSD_OFF);
+    SSD_SetState(SSD_THIRD, SSD_OFF);
+
+
+    ((((PORTD))) = (SSD_Data[ssd_symbol]));
+
+
+
+    SSD_SetState(ssd, SSD_ON);
+
+
+
 }
