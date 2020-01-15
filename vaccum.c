@@ -18,7 +18,7 @@ int main()
         __delay_ms(1);
         SW_Update();
         SSD_Update();
-        GPIO_WritePortPin(LED_4_PORT_DR, LED_4_PIN, 1 );
+      //  GPIO_WritePortPin(LED_4_PORT_DR, LED_4_PIN, 1 );
         
         if( SW_GetState(SW_PLUS) == SW_PRESSED )
         

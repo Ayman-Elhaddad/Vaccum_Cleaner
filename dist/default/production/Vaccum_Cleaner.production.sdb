@@ -58,6 +58,12 @@ SSD_NULL 3
 SSD_OFF 0
 SSD_ON 1
 ]
+"40 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+[e E852 . `uc
+LOW_SPEED 140
+MID_SPEED 90
+HIGH_SPEED 10
+]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
@@ -100,9 +106,9 @@ SSD_ON 1
 [v _SSD_current SSD_current `E852  1 s 1 SSD_current ]
 "26
 [v _SSD_Values SSD_Values `[3]E861  1 s 3 SSD_Values ]
-[s S84 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
+[s S83 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
 "28 E:\Boot camp\final_project\Vaccum_Cleaner\SW.c
-[v _SWs_Info SWs_Info `[3]S84  1 s 9 SWs_Info ]
+[v _SWs_Info SWs_Info `[3]S83  1 s 9 SWs_Info ]
 "9 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
 [v _main main `(i  1 e 2 0 ]
 {

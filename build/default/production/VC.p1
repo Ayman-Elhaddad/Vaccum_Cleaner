@@ -1,39 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"19 ./SW.h
-[; ;./SW.h: 19: void SW_Init(void);
-[v _SW_Init `(v ~T0 @X0 0 ef ]
-"35 ./SSD.h
-[; ;./SSD.h: 35: void SSD_Init(void);
-[v _SSD_Init `(v ~T0 @X0 0 ef ]
-[v F1023 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
-[v __delay `JF1023 ~T0 @X0 0 e ]
-[p i __delay ]
-"23 ./SW.h
-[; ;./SW.h: 23: void SW_Update(void);
-[v _SW_Update `(v ~T0 @X0 0 ef ]
-"36 ./SSD.h
-[; ;./SSD.h: 36: void SSD_Update(void);
-[v _SSD_Update `(v ~T0 @X0 0 ef ]
-"23 vaccum.c
-[; ;vaccum.c: 23:         if( SW_GetState(SW_PLUS) == SW_PRESSED )
-[c E1033 0 1 2 .. ]
-[n E1033 . SW_PLUS SW_MINUS SW_PRESURE  ]
-[c E1038 0 1 2 3 .. ]
-[n E1038 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
-"22 ./SW.h
-[; ;./SW.h: 22: tSW_State SW_GetState(tSW sw);
-[v _SW_GetState `(E1038 ~T0 @X0 0 ef1`E1033 ]
-"28 vaccum.c
-[; ;vaccum.c: 28:           SSD_SetValue(SSD_FIRST,SSD_LOW);
-[c E1048 0 1 2 .. ]
-[n E1048 . SSD_FIRST SSD_SECOND SSD_THIRD  ]
-[c E1057 0 1 2 3 .. ]
-[n E1057 . SSD_LOW SSD_MID SSD_HIGH SSD_NULL  ]
-"37 ./SSD.h
-[; ;./SSD.h: 37: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
-[v _SSD_SetValue `(v ~T0 @X0 0 ef2`E1048`E1057 ]
+"40 VC.c
+[; ;VC.c: 40: tVC_SPEED VC_GetSpeed(void)
+[c E852 140 90 10 .. ]
+[n E852 . LOW_SPEED MID_SPEED HIGH_SPEED  ]
 "5 ./Main.h
 [p x FOSC = XT ]
 "6
@@ -230,108 +199,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"9 vaccum.c
-[; ;vaccum.c: 9: int main()
-[v _main `(i ~T0 @X0 1 ef ]
-"10
-[; ;vaccum.c: 10: {
-{
-[e :U _main ]
-[f ]
-"11
-[; ;vaccum.c: 11:     SW_Init();
-[e ( _SW_Init ..  ]
-"12
-[; ;vaccum.c: 12:     SSD_Init();
-[e ( _SSD_Init ..  ]
-"16
-[; ;vaccum.c: 16:     while(1)
-[e :U 102 ]
-"17
-[; ;vaccum.c: 17:     {
-{
-"18
-[; ;vaccum.c: 18:         _delay((unsigned long)((1)*(80000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 80000000 `l `d .4000.0 `ul ]
+"18 VC.c
+[; ;VC.c: 18: void VC_Init(void)
+[v _VC_Init `(v ~T0 @X0 1 ef ]
 "19
-[; ;vaccum.c: 19:         SW_Update();
-[e ( _SW_Update ..  ]
-"20
-[; ;vaccum.c: 20:         SSD_Update();
-[e ( _SSD_Update ..  ]
+[; ;VC.c: 19: {
+{
+[e :U _VC_Init ]
+[f ]
 "23
-[; ;vaccum.c: 23:         if( SW_GetState(SW_PLUS) == SW_PRESSED )
-[e $ ! == -> ( _SW_GetState (1 . `E1033 0 `ui -> . `E1038 2 `ui 104  ]
+[; ;VC.c: 23: }
+[e :UE 95 ]
+}
+"24
+[; ;VC.c: 24: void VC_Update(void)
+[v _VC_Update `(v ~T0 @X0 1 ef ]
 "25
-[; ;vaccum.c: 25:         {
+[; ;VC.c: 25: {
 {
-"28
-[; ;vaccum.c: 28:           SSD_SetValue(SSD_FIRST,SSD_LOW);
-[e ( _SSD_SetValue (2 , . `E1048 0 . `E1057 0 ]
-"29
-[; ;vaccum.c: 29:           SSD_SetValue(SSD_SECOND,SSD_NULL);
-[e ( _SSD_SetValue (2 , . `E1048 1 . `E1057 3 ]
-"30
-[; ;vaccum.c: 30:           SSD_SetValue(SSD_THIRD,SSD_NULL);
-[e ( _SSD_SetValue (2 , . `E1048 2 . `E1057 3 ]
-"31
-[; ;vaccum.c: 31:         }
-}
-[e $U 105  ]
-"32
-[; ;vaccum.c: 32:         else if( SW_GetState(SW_MINUS) == SW_PRESSED )
-[e :U 104 ]
-[e $ ! == -> ( _SW_GetState (1 . `E1033 1 `ui -> . `E1038 2 `ui 106  ]
-"34
-[; ;vaccum.c: 34:         {
-{
-"37
-[; ;vaccum.c: 37:           SSD_SetValue(SSD_FIRST,SSD_LOW);
-[e ( _SSD_SetValue (2 , . `E1048 0 . `E1057 0 ]
-"38
-[; ;vaccum.c: 38:           SSD_SetValue(SSD_SECOND,SSD_MID);
-[e ( _SSD_SetValue (2 , . `E1048 1 . `E1057 1 ]
+[e :U _VC_Update ]
+[f ]
 "39
-[; ;vaccum.c: 39:           SSD_SetValue(SSD_THIRD,SSD_NULL);
-[e ( _SSD_SetValue (2 , . `E1048 2 . `E1057 3 ]
+[; ;VC.c: 39: }
+[e :UE 96 ]
+}
+"40
+[; ;VC.c: 40: tVC_SPEED VC_GetSpeed(void)
+[v _VC_GetSpeed `(E852 ~T0 @X0 1 ef ]
 "41
-[; ;vaccum.c: 41:         }
-}
-[e $U 107  ]
-"42
-[; ;vaccum.c: 42:         else if( SW_GetState(SW_PRESURE) == SW_PRESSED )
-[e :U 106 ]
-[e $ ! == -> ( _SW_GetState (1 . `E1033 2 `ui -> . `E1038 2 `ui 108  ]
-"44
-[; ;vaccum.c: 44:         {
+[; ;VC.c: 41: {
 {
-"47
-[; ;vaccum.c: 47:           SSD_SetValue(SSD_FIRST,SSD_LOW);
-[e ( _SSD_SetValue (2 , . `E1048 0 . `E1057 0 ]
-"48
-[; ;vaccum.c: 48:           SSD_SetValue(SSD_SECOND,SSD_MID);
-[e ( _SSD_SetValue (2 , . `E1048 1 . `E1057 1 ]
-"49
-[; ;vaccum.c: 49:           SSD_SetValue(SSD_THIRD,SSD_HIGH);
-[e ( _SSD_SetValue (2 , . `E1048 2 . `E1057 2 ]
-"50
-[; ;vaccum.c: 50:         }
-}
-[e :U 108 ]
-[e :U 107 ]
-[e :U 105 ]
-"52
-[; ;vaccum.c: 52:     }
-}
-[e :U 101 ]
-[e $U 102  ]
-[e :U 103 ]
-"53
-[; ;vaccum.c: 53:     return 0;
-[e ) -> 0 `i ]
-[e $UE 100  ]
-"54
-[; ;vaccum.c: 54: }
-[e :UE 100 ]
+[e :U _VC_GetSpeed ]
+[f ]
+"43
+[; ;VC.c: 43: }
+[e :UE 97 ]
 }
