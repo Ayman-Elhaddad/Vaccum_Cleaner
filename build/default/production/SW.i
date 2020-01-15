@@ -1751,11 +1751,14 @@ typedef unsigned int tWord;
 
 
 
+
+
+
 typedef enum
 {
     SW_PLUS,
     SW_MINUS,
-    SW_PRESURE
+    SW_PRESSURE
 }tSW;
 
 typedef enum
@@ -1847,7 +1850,7 @@ void SW_Update(void)
         } else if (index == SW_MINUS)
         {
             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((1)))) >> (((1))));
-        } else if (index == SW_PRESURE)
+        } else if (index == SW_PRESSURE)
         {
             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((2)))) >> (((2))));
         } else

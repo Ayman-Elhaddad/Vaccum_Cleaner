@@ -5,22 +5,29 @@
 #include "Port.h"
 #include "SW.h"
 #include "SSD.h"
+#include "VC.h"
 
 int main()
 {
     SW_Init();
     SSD_Init();
-    
-   // GPIO_InitPortPin(LED_4_PORT_CR, LED_4_PIN, GPIO_OUT);
+    VC_Init();
+    GPIO_InitPortPin(LED_4_PORT_CR, LED_4_PIN, GPIO_OUT);
+    GPIO_WritePortPin(LED_4_PORT_DR, LED_4_PIN, 0 );
+   
     
     while(1)
     {
+       
         __delay_ms(1);
         SW_Update();
         SSD_Update();
+        VC_Update();
+       
+        // GPIO_WritePortPin(LED_4_PORT_DR, LED_4_PIN, 0 );
       //  GPIO_WritePortPin(LED_4_PORT_DR, LED_4_PIN, 1 );
         
-        if( SW_GetState(SW_PLUS) == SW_PRESSED )
+        if( VC_GetSpeed() == LOW_SPEED )
         
         {
         
@@ -29,7 +36,7 @@ int main()
           SSD_SetValue(SSD_SECOND,SSD_NULL);
           SSD_SetValue(SSD_THIRD,SSD_NULL);
         }
-        else if( SW_GetState(SW_MINUS) == SW_PRESSED )
+        else if( VC_GetSpeed() == MID_SPEED )
         
         {
         
@@ -39,7 +46,7 @@ int main()
           SSD_SetValue(SSD_THIRD,SSD_NULL);
           
         }
-        else if( SW_GetState(SW_PRESURE) == SW_PRESSED )
+        else if( VC_GetSpeed() == HIGH_SPEED )
         
         {
         

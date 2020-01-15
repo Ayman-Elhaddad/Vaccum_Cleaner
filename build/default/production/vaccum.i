@@ -1944,11 +1944,14 @@ typedef unsigned int tWord;
 
 
 
+
+
+
 typedef enum
 {
     SW_PLUS,
     SW_MINUS,
-    SW_PRESURE
+    SW_PRESSURE
 }tSW;
 
 typedef enum
@@ -1999,22 +2002,44 @@ void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
 void SSD_SetState(tSSD ssd, tSSD_State state);
 # 7 "vaccum.c" 2
 
+# 1 "./VC.h" 1
+# 17 "./VC.h"
+typedef enum
+{
+    LOW_SPEED = 0,
+    MID_SPEED = 1,
+    HIGH_SPEED = 2
+}tVC_SPEED;
+
+
+
+void VC_Init(void);
+void VC_Update(void);
+tVC_SPEED VC_GetSpeed(void);
+# 8 "vaccum.c" 2
+
 
 int main()
 {
     SW_Init();
     SSD_Init();
-
+    VC_Init();
+    ((((TRISB))) = (((TRISB)) & (~(1 << ((3)))))|((0) << ((3))));
+    ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(0 << ((3))));
 
 
     while(1)
     {
+
         _delay((unsigned long)((1)*(80000000/4000.0)));
         SW_Update();
         SSD_Update();
+        VC_Update();
 
 
-        if( SW_GetState(SW_PLUS) == SW_PRESSED )
+
+
+        if( VC_GetSpeed() == LOW_SPEED )
 
         {
 
@@ -2023,7 +2048,7 @@ int main()
           SSD_SetValue(SSD_SECOND,SSD_NULL);
           SSD_SetValue(SSD_THIRD,SSD_NULL);
         }
-        else if( SW_GetState(SW_MINUS) == SW_PRESSED )
+        else if( VC_GetSpeed() == MID_SPEED )
 
         {
 
@@ -2033,7 +2058,7 @@ int main()
           SSD_SetValue(SSD_THIRD,SSD_NULL);
 
         }
-        else if( SW_GetState(SW_PRESURE) == SW_PRESSED )
+        else if( VC_GetSpeed() == HIGH_SPEED )
 
         {
 

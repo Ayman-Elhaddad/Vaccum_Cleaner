@@ -13,7 +13,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46 SW.c
 [; ;SW.c: 46:     for (index = SW_PLUS; index < (3); index++)
 [c E852 0 1 2 .. ]
-[n E852 . SW_PLUS SW_MINUS SW_PRESURE  ]
+[n E852 . SW_PLUS SW_MINUS SW_PRESSURE  ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
@@ -358,7 +358,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SW.c: 101:             SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((1)))) >> (((1))));
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> >> & -> _PORTB `i << -> 1 `i -> 1 `i -> 1 `i `uc ]
 "102
-[; ;SW.c: 102:         } else if (index == SW_PRESURE)
+[; ;SW.c: 102:         } else if (index == SW_PRESSURE)
 }
 [e $U 109  ]
 [e :U 108 ]

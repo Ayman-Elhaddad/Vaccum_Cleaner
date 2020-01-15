@@ -99,9 +99,9 @@ void SW_Update(void)
         } else if (index == SW_MINUS)
         {
             SWs_Info[index].sw_samples[1] = GPIO_ReadPortPin(SW_MINUS_PORT_DR, SW_MINUS_PIN);
-        } else if (index == SW_PRESURE)
+        } else if (index == SW_PRESSURE)
         {
-            SWs_Info[index].sw_samples[1] = GPIO_ReadPortPin(SW_PRESURE_PORT_DR, SW_PRESURE_PIN);
+            SWs_Info[index].sw_samples[1] = GPIO_ReadPortPin(SW_PRESSURE_PORT_DR, SW_PRESSURE_PIN);
         } else
         {
             /* Do nothing should not be here !! */

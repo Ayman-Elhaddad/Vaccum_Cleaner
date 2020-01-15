@@ -1759,9 +1759,9 @@ typedef unsigned int tWord;
 # 17 "./VC.h"
 typedef enum
 {
-    LOW_SPEED = 140,
-    MID_SPEED = 90,
-    HIGH_SPEED =10
+    LOW_SPEED = 0,
+    MID_SPEED = 1,
+    HIGH_SPEED = 2
 }tVC_SPEED;
 
 
@@ -1775,11 +1775,14 @@ tVC_SPEED VC_GetSpeed(void);
 
 
 
+
+
+
 typedef enum
 {
     SW_PLUS,
     SW_MINUS,
-    SW_PRESURE
+    SW_PRESSURE
 }tSW;
 
 typedef enum
@@ -1802,17 +1805,95 @@ void SW_Update(void);
 
 
 
+static tVC_SPEED TargetSpeed;
+
 void VC_Init(void)
 {
 
+    TargetSpeed = MID_SPEED;
 
 
 }
 void VC_Update(void)
 {
-# 39 "VC.c"
+    static tWord VC_counter = 0;
+    tByte Index;
+
+    VC_counter += (5);
+
+    if(VC_counter != (20))
+    {
+        return;
+
+    }
+    VC_counter = 0;
+    for(Index = SW_PLUS ; Index < (3) ; Index ++ )
+    {
+
+
+            switch(Index)
+            {
+                case SW_PLUS :
+                    if(SW_GetState(SW_PLUS) == SW_PRE_RELEASED)
+                    {
+                         if( TargetSpeed == HIGH_SPEED)
+                         {
+                            continue;
+                         }
+
+                              TargetSpeed ++;
+                    }
+                    break;
+                case SW_MINUS :
+                    if(SW_GetState(SW_MINUS) == SW_PRE_RELEASED)
+                    {
+                        if( TargetSpeed == LOW_SPEED)
+                        {
+                            continue;
+                        }
+                             TargetSpeed --;
+                    }
+                    break;
+                case SW_PRESSURE :
+                    if(SW_GetState(SW_PRESSURE) == SW_PRE_RELEASED)
+                    {
+                         ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(0 << ((3))));
+                    }
+                    break;
+                default:
+
+                    break;
+
+            }
+
+
+        if(SW_GetState(SW_PRESSURE) == SW_PRESSED)
+        {
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(1 << ((3))));
+
+           static tWord PRESSURE_counter = 0;
+
+            PRESSURE_counter += (20);
+            if( PRESSURE_counter != (3000) )
+            {
+                return ;
+            }
+            PRESSURE_counter = 0;
+
+            if( TargetSpeed == LOW_SPEED)
+                    {
+                       return;
+                    }
+
+                    TargetSpeed --;
+
+        }
+
+}
+# 117 "VC.c"
 }
 tVC_SPEED VC_GetSpeed(void)
 {
 
+    return TargetSpeed;
 }

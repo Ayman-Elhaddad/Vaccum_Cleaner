@@ -1,8 +1,22 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"40 VC.c
-[; ;VC.c: 40: tVC_SPEED VC_GetSpeed(void)
-[c E852 140 90 10 .. ]
+"18 VC.c
+[; ;VC.c: 18: static tVC_SPEED TargetSpeed;
+[c E852 0 1 2 .. ]
 [n E852 . LOW_SPEED MID_SPEED HIGH_SPEED  ]
+"40
+[; ;VC.c: 40:     for(Index = SW_PLUS ; Index < (3) ; Index ++ )
+[c E860 0 1 2 .. ]
+[n E860 . SW_PLUS SW_MINUS SW_PRESSURE  ]
+"47
+[; ;VC.c: 47:                     if(SW_GetState(SW_PLUS) == SW_PRE_RELEASED)
+[c E865 0 1 2 3 .. ]
+[n E865 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
+"25 ./SW.h
+[; ;./SW.h: 25: tSW_State SW_GetState(tSW sw);
+[v _SW_GetState `(E865 ~T0 @X0 0 ef1`E860 ]
+"216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "5 ./Main.h
 [p x FOSC = XT ]
 "6
@@ -200,38 +214,253 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "18 VC.c
-[; ;VC.c: 18: void VC_Init(void)
+[; ;VC.c: 18: static tVC_SPEED TargetSpeed;
+[v _TargetSpeed `E852 ~T0 @X0 1 s ]
+"20
+[; ;VC.c: 20: void VC_Init(void)
 [v _VC_Init `(v ~T0 @X0 1 ef ]
-"19
-[; ;VC.c: 19: {
+"21
+[; ;VC.c: 21: {
 {
 [e :U _VC_Init ]
 [f ]
 "23
-[; ;VC.c: 23: }
+[; ;VC.c: 23:     TargetSpeed = MID_SPEED;
+[e = _TargetSpeed . `E852 1 ]
+"26
+[; ;VC.c: 26: }
 [e :UE 95 ]
 }
-"24
-[; ;VC.c: 24: void VC_Update(void)
+"27
+[; ;VC.c: 27: void VC_Update(void)
 [v _VC_Update `(v ~T0 @X0 1 ef ]
-"25
-[; ;VC.c: 25: {
+"28
+[; ;VC.c: 28: {
 {
 [e :U _VC_Update ]
 [f ]
+"29
+[; ;VC.c: 29:     static tWord VC_counter = 0;
+[v F878 `ui ~T0 @X0 1 s VC_counter ]
+[i F878
+-> -> 0 `i `ui
+]
+"30
+[; ;VC.c: 30:     tByte Index;
+[v _Index `uc ~T0 @X0 1 a ]
+"32
+[; ;VC.c: 32:     VC_counter += (5);
+[e =+ F878 -> -> 5 `i `ui ]
+"34
+[; ;VC.c: 34:     if(VC_counter != (20))
+[e $ ! != F878 -> -> 20 `i `ui 97  ]
+"35
+[; ;VC.c: 35:     {
+{
+"36
+[; ;VC.c: 36:         return;
+[e $UE 96  ]
+"38
+[; ;VC.c: 38:     }
+}
+[e :U 97 ]
 "39
-[; ;VC.c: 39: }
+[; ;VC.c: 39:     VC_counter = 0;
+[e = F878 -> -> 0 `i `ui ]
+"40
+[; ;VC.c: 40:     for(Index = SW_PLUS ; Index < (3) ; Index ++ )
+{
+[e = _Index -> . `E860 0 `uc ]
+[e $ < -> _Index `i -> 3 `i 98  ]
+[e $U 99  ]
+[e :U 98 ]
+"41
+[; ;VC.c: 41:     {
+{
+"44
+[; ;VC.c: 44:             switch(Index)
+[e $U 102  ]
+"45
+[; ;VC.c: 45:             {
+{
+"46
+[; ;VC.c: 46:                 case SW_PLUS :
+[e :U 103 ]
+"47
+[; ;VC.c: 47:                     if(SW_GetState(SW_PLUS) == SW_PRE_RELEASED)
+[e $ ! == -> ( _SW_GetState (1 . `E860 0 `ui -> . `E865 3 `ui 104  ]
+"48
+[; ;VC.c: 48:                     {
+{
+"49
+[; ;VC.c: 49:                          if( TargetSpeed == HIGH_SPEED)
+[e $ ! == -> _TargetSpeed `ui -> . `E852 2 `ui 105  ]
+"50
+[; ;VC.c: 50:                          {
+{
+"51
+[; ;VC.c: 51:                             continue;
+[e $U 100  ]
+"52
+[; ;VC.c: 52:                          }
+}
+[e :U 105 ]
+"54
+[; ;VC.c: 54:                               TargetSpeed ++;
+[e ++ _TargetSpeed -> -> 1 `i `E852 ]
+"55
+[; ;VC.c: 55:                     }
+}
+[e :U 104 ]
+"56
+[; ;VC.c: 56:                     break;
+[e $U 101  ]
+"57
+[; ;VC.c: 57:                 case SW_MINUS :
+[e :U 106 ]
+"58
+[; ;VC.c: 58:                     if(SW_GetState(SW_MINUS) == SW_PRE_RELEASED)
+[e $ ! == -> ( _SW_GetState (1 . `E860 1 `ui -> . `E865 3 `ui 107  ]
+"59
+[; ;VC.c: 59:                     {
+{
+"60
+[; ;VC.c: 60:                         if( TargetSpeed == LOW_SPEED)
+[e $ ! == -> _TargetSpeed `ui -> . `E852 0 `ui 108  ]
+"61
+[; ;VC.c: 61:                         {
+{
+"62
+[; ;VC.c: 62:                             continue;
+[e $U 100  ]
+"63
+[; ;VC.c: 63:                         }
+}
+[e :U 108 ]
+"64
+[; ;VC.c: 64:                              TargetSpeed --;
+[e -- _TargetSpeed -> -> 1 `i `E852 ]
+"65
+[; ;VC.c: 65:                     }
+}
+[e :U 107 ]
+"66
+[; ;VC.c: 66:                     break;
+[e $U 101  ]
+"67
+[; ;VC.c: 67:                 case SW_PRESSURE :
+[e :U 109 ]
+"68
+[; ;VC.c: 68:                     if(SW_GetState(SW_PRESSURE) == SW_PRE_RELEASED)
+[e $ ! == -> ( _SW_GetState (1 . `E860 2 `ui -> . `E865 3 `ui 110  ]
+"69
+[; ;VC.c: 69:                     {
+{
+"70
+[; ;VC.c: 70:                          ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(0 << ((3))));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 3 `i << -> 0 `i -> 3 `i `uc ]
+"71
+[; ;VC.c: 71:                     }
+}
+[e :U 110 ]
+"72
+[; ;VC.c: 72:                     break;
+[e $U 101  ]
+"73
+[; ;VC.c: 73:                 default:
+[e :U 111 ]
+"75
+[; ;VC.c: 75:                     break;
+[e $U 101  ]
+"77
+[; ;VC.c: 77:             }
+}
+[e $U 101  ]
+[e :U 102 ]
+[e [\ -> _Index `i , $ . `E860 0 103
+ , $ . `E860 1 106
+ , $ . `E860 2 109
+ 111 ]
+[e :U 101 ]
+"80
+[; ;VC.c: 80:         if(SW_GetState(SW_PRESSURE) == SW_PRESSED)
+[e $ ! == -> ( _SW_GetState (1 . `E860 2 `ui -> . `E865 2 `ui 112  ]
+"81
+[; ;VC.c: 81:         {
+{
+"82
+[; ;VC.c: 82:             ((((PORTB))) = (((PORTB)) & (~(1 << ((3)))))|(1 << ((3))));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 3 `i << -> 1 `i -> 3 `i `uc ]
+"84
+[; ;VC.c: 84:            static tWord PRESSURE_counter = 0;
+[v F880 `ui ~T0 @X0 1 s PRESSURE_counter ]
+[i F880
+-> -> 0 `i `ui
+]
+"86
+[; ;VC.c: 86:             PRESSURE_counter += (20);
+[e =+ F880 -> -> 20 `i `ui ]
+"87
+[; ;VC.c: 87:             if( PRESSURE_counter != (3000) )
+[e $ ! != F880 -> -> 3000 `i `ui 113  ]
+"88
+[; ;VC.c: 88:             {
+{
+"89
+[; ;VC.c: 89:                 return ;
+[e $UE 96  ]
+"90
+[; ;VC.c: 90:             }
+}
+[e :U 113 ]
+"91
+[; ;VC.c: 91:             PRESSURE_counter = 0;
+[e = F880 -> -> 0 `i `ui ]
+"93
+[; ;VC.c: 93:             if( TargetSpeed == LOW_SPEED)
+[e $ ! == -> _TargetSpeed `ui -> . `E852 0 `ui 114  ]
+"94
+[; ;VC.c: 94:                     {
+{
+"95
+[; ;VC.c: 95:                        return;
+[e $UE 96  ]
+"96
+[; ;VC.c: 96:                     }
+}
+[e :U 114 ]
+"98
+[; ;VC.c: 98:                     TargetSpeed --;
+[e -- _TargetSpeed -> -> 1 `i `E852 ]
+"100
+[; ;VC.c: 100:         }
+}
+[e :U 112 ]
+"102
+[; ;VC.c: 102: }
+}
+[e :U 100 ]
+[e ++ _Index -> -> 1 `i `uc ]
+[e $ < -> _Index `i -> 3 `i 98  ]
+[e :U 99 ]
+}
+"117
+[; ;VC.c: 117: }
 [e :UE 96 ]
 }
-"40
-[; ;VC.c: 40: tVC_SPEED VC_GetSpeed(void)
+"118
+[; ;VC.c: 118: tVC_SPEED VC_GetSpeed(void)
 [v _VC_GetSpeed `(E852 ~T0 @X0 1 ef ]
-"41
-[; ;VC.c: 41: {
+"119
+[; ;VC.c: 119: {
 {
 [e :U _VC_GetSpeed ]
 [f ]
-"43
-[; ;VC.c: 43: }
-[e :UE 97 ]
+"121
+[; ;VC.c: 121:     return TargetSpeed;
+[e ) _TargetSpeed ]
+[e $UE 115  ]
+"122
+[; ;VC.c: 122: }
+[e :UE 115 ]
 }

@@ -1,11 +1,14 @@
 #ifndef __SW_H__
 #define __SW_H__
 
+
+#define N_SWITCHES      (3)
+
 typedef enum
 {
     SW_PLUS,
     SW_MINUS,
-    SW_PRESURE
+    SW_PRESSURE
 }tSW;
 
 typedef enum

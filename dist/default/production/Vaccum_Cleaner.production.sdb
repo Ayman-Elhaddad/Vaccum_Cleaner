@@ -3,19 +3,13 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
-"23 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
-[e E1033 . `uc
-SW_PLUS 0
-SW_MINUS 1
-SW_PRESURE 2
+"30 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
+[e E1071 . `uc
+LOW_SPEED 0
+MID_SPEED 1
+HIGH_SPEED 2
 ]
-[e E1038 . `uc
-SW_RELEASED 0
-SW_PRE_PRESSED 1
-SW_PRESSED 2
-SW_PRE_RELEASED 3
-]
-"28
+"35
 [e E1048 . `uc
 SSD_FIRST 0
 SSD_SECOND 1
@@ -38,7 +32,7 @@ SW_PRE_RELEASED 3
 [e E852 . `uc
 SW_PLUS 0
 SW_MINUS 1
-SW_PRESURE 2
+SW_PRESSURE 2
 ]
 "23 E:\Boot camp\final_project\Vaccum_Cleaner\SSD.c
 [e E852 . `uc
@@ -58,11 +52,24 @@ SSD_NULL 3
 SSD_OFF 0
 SSD_ON 1
 ]
-"40 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+"18 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
 [e E852 . `uc
-LOW_SPEED 140
-MID_SPEED 90
-HIGH_SPEED 10
+LOW_SPEED 0
+MID_SPEED 1
+HIGH_SPEED 2
+]
+"40
+[e E860 . `uc
+SW_PLUS 0
+SW_MINUS 1
+SW_PRESSURE 2
+]
+"47
+[e E865 . `uc
+SW_RELEASED 0
+SW_PRE_PRESSED 1
+SW_PRESSED 2
+SW_PRE_RELEASED 3
 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -87,11 +94,17 @@ HIGH_SPEED 10
 "35 E:\Boot camp\final_project\Vaccum_Cleaner\SW.c
 [v _SW_Init SW_Init `(v  1 e 1 0 ]
 "60
-[v _SW_GetState SW_GetState `(E1038  1 e 1 0 ]
+[v _SW_GetState SW_GetState `(E857  1 e 1 0 ]
 "75
 [v _SW_Update SW_Update `(v  1 e 1 0 ]
-"9 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
+"10 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
 [v _main main `(i  1 e 2 0 ]
+"20 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+[v _VC_Init VC_Init `(v  1 e 1 0 ]
+"27
+[v _VC_Update VC_Update `(v  1 e 1 0 ]
+"118
+[v _VC_GetSpeed VC_GetSpeed `(E1071  1 e 1 0 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "340
@@ -106,13 +119,45 @@ HIGH_SPEED 10
 [v _SSD_current SSD_current `E852  1 s 1 SSD_current ]
 "26
 [v _SSD_Values SSD_Values `[3]E861  1 s 3 SSD_Values ]
-[s S83 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
+[s S87 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
 "28 E:\Boot camp\final_project\Vaccum_Cleaner\SW.c
-[v _SWs_Info SWs_Info `[3]S83  1 s 9 SWs_Info ]
-"9 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
+[v _SWs_Info SWs_Info `[3]S87  1 s 9 SWs_Info ]
+"18 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+[v _TargetSpeed TargetSpeed `E852  1 s 1 TargetSpeed ]
+"10 E:\Boot camp\final_project\Vaccum_Cleaner\vaccum.c
 [v _main main `(i  1 e 2 0 ]
 {
-"54
+"61
+} 0
+"27 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+[v _VC_Update VC_Update `(v  1 e 1 0 ]
+{
+"30
+[v VC_Update@Index Index `uc  1 a 1 8 ]
+"29
+[v VC_Update@VC_counter VC_counter `ui  1 s 2 VC_counter ]
+"84
+[v VC_Update@PRESSURE_counter PRESSURE_counter `ui  1 s 2 PRESSURE_counter ]
+"117
+} 0
+"60 E:\Boot camp\final_project\Vaccum_Cleaner\SW.c
+[v _SW_GetState SW_GetState `(E857  1 e 1 0 ]
+{
+[v SW_GetState@sw sw `E852  1 a 1 wreg ]
+[v SW_GetState@sw sw `E852  1 a 1 wreg ]
+"64
+[v SW_GetState@sw sw `E852  1 a 1 5 ]
+"66
+} 0
+"20 E:\Boot camp\final_project\Vaccum_Cleaner\VC.c
+[v _VC_Init VC_Init `(v  1 e 1 0 ]
+{
+"26
+} 0
+"118
+[v _VC_GetSpeed VC_GetSpeed `(E1071  1 e 1 0 ]
+{
+"122
 } 0
 "75 E:\Boot camp\final_project\Vaccum_Cleaner\SW.c
 [v _SW_Update SW_Update `(v  1 e 1 0 ]
@@ -129,15 +174,6 @@ HIGH_SPEED 10
 "37
 [v SW_Init@index index `uc  1 a 1 5 ]
 "57
-} 0
-"60
-[v _SW_GetState SW_GetState `(E1038  1 e 1 0 ]
-{
-[v SW_GetState@sw sw `E852  1 a 1 wreg ]
-[v SW_GetState@sw sw `E852  1 a 1 wreg ]
-"64
-[v SW_GetState@sw sw `E852  1 a 1 5 ]
-"66
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]

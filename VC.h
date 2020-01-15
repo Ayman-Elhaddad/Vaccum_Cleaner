@@ -16,9 +16,9 @@
 
 typedef enum
 {
-    LOW_SPEED = 140,
-    MID_SPEED = 90,
-    HIGH_SPEED =10        
+    LOW_SPEED = 0,
+    MID_SPEED = 1,
+    HIGH_SPEED = 2        
 }tVC_SPEED;
 
 
